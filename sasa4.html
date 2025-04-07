@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pedido de Casamento</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('./1.png') no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      top: 20%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      animation: fadeInDown 2s ease-in-out;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .yes {
+      background-color: #28a745;
+      color: white;
+      margin-right: 20px;
+    }
+
+    .no {
+      background-color: #dc3545;
+      color: white;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    #result {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      color: white;
+      animation: fadeIn 1s ease-in-out forwards;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #000000cc;
+      text-align: center;
+    }
+
+    #result img {
+      max-width: 80%;
+      max-height: 80vh;
+      margin-bottom: 20px;
+      border-radius: 15px;
+    }
+
+    #result h2 {
+      font-size: 2rem;
+      color: #fff;
+      margin-top: 0;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>Você quer casar comigo?</h1>
+    <div class="buttons">
+      <button class="button yes" onclick="mostrarResultado()">Sim!</button>
+    </div>
+  </div>
+
+  <button class="button no" id="noBtn">Não...</button>
+
+  <div id="result">
+    <img src="./2.png" alt="Foto Romântica">
+    <h2>Eu sabia que você diria sim! "Nenhum espaço de tempo com você seria suficiente. Comecemos com o para sempre" Eu te amo Rebeca Maria e sempre vou te amar🩷.</h2>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
+      const y = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    function mostrarResultado() {
+      document.querySelector('.content').style.display = 'none';
+      document.getElementById('noBtn').style.display = 'none';
+      document.getElementById('result').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
